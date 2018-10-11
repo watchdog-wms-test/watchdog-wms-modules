@@ -1,2 +1,5 @@
 language: python
-script: true
+script:
+  - COMMITER=$TRAVIS_PULL_REQUEST_SLUG | sed 's#/.+##'; echo $COMMITER
+  - CHANGED_FILES=($(git diff --name-only $TRAVIS_COMMIT_RANGE)); printf $CHANGED_FILES
+  - true
