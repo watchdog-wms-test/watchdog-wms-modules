@@ -1,2 +1,4 @@
 language: python
-script: true
+script:
+  - echo $TRAVIS_PULL_REQUEST_SLUG
+  - true
