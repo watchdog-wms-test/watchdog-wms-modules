@@ -3,6 +3,7 @@ container:
   cpu: 2
   memory: 1G
 
+
 task:
   clone_script: |
     if [[ -z "$CIRRUS_PR" ]]; then
