@@ -4,14 +4,14 @@ dist: xenial
 jdk: openjdk11
 
 before_script:
-  - git clone https://github.com/watchdog-wms/build-tools
-  - export WATCHDOG_PR_CHECKER=$(pwd)/build-tools/jars/PullRequestChecker.jar
+  - git clone 'https://github.com/watchdog-wms/build-tools'
+  - export WATCHDOG_PR_CHECKER=$(pwd)'/build-tools/jars/PullRequestChecker.jar'
   - ls "${WATCHDOG_PR_CHECKER}" > /dev/null 2>&1
 
 matrix:
   include:
-  - name: "signed commit test"
-    env: TEST_NAME="VERIFIED_COMMIT"
-  - name: "permission test"
-    env: TEST_NAME="OWNER_OR_PERMISSION"
+  - name: 'signed commit test'
+    env: TEST_NAME='VERIFIED_COMMIT'
+  - name: 'permission test'
+    env: TEST_NAME='PERMISSION'
 script: java -jar "${WATCHDOG_PR_CHECKER}" -check "${TEST_NAME}"
