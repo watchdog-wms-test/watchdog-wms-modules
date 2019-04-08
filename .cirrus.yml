@@ -5,13 +5,13 @@ container:
 
 script:
   - java -version
+  - which git
   - git clone https://github.com/watchdog-wms/build-tools
   - WATCHDOG_PR_CHECKER=$(pwd)/build-tools/jars/PullRequestChecker.jar
   - ls "${WATCHDOG_PR_CHECKER}" > /dev/null 2>&1
 
 task:
   name: signed commit test
-  depends_on: install
   script: 
     - env
     - ls -la .
