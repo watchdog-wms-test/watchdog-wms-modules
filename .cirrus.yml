@@ -18,4 +18,6 @@ task:
 task:
   name: VERIFIED_COMMIT
   depends_on: install
-  script: java -jar "${WATCHDOG_PR_CHECKER}" -check "VERIFIED_COMMIT"
+  script: 
+    - env
+    - java -jar "${WATCHDOG_PR_CHECKER}" -check "VERIFIED_COMMIT"
