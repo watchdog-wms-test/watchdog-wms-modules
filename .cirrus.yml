@@ -1,0 +1,10 @@
+container:
+  image: openjdk:11-jdk
+  cpu: 4
+  memory: 12
+
+task:
+  test1_script: java -version
+  test2_script: 
+    - echo "Here comes more then one script!"
+    - printenv
