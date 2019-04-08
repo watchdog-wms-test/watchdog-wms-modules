@@ -6,18 +6,15 @@ container:
 task:
   name: install
   script:
+  - java -version
   - git clone https://github.com/watchdog-wms/build-tools
   - WATCHDOG_PR_CHECKER=$(pwd)/build-tools/jars/PullRequestChecker.jar
-  always: ls "${WATCHDOG_PR_CHECKER}" > /dev/null 2>&1
+  - ls "${WATCHDOG_PR_CHECKER}" > /dev/null 2>&1
 
 task:
-  name: java test
-  depends_on: install
-  script: java -version
-
-task:
-  name: VERIFIED_COMMIT
+  name: signed commit test
   depends_on: install
   script: 
     - env
+    - ls -la .
     - java -jar "${WATCHDOG_PR_CHECKER}" -check "VERIFIED_COMMIT"
