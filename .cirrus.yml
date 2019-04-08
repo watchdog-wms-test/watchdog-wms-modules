@@ -12,4 +12,4 @@ task:
 
 task:
   name: TEST2
-  test1_script: sleep 1s
+  test1_script: git show $CIRRUS_CHANGE_IN_REPO
