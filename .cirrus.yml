@@ -4,7 +4,12 @@ container:
   memory: 12
 
 task:
+  name: TEST1
   test1_script: java -version
   test2_script: 
     - echo "Here comes more then one script!"
     - printenv
+
+task:
+  name: TEST2
+  test1_script: sleep 1s
