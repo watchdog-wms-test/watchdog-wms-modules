@@ -1,15 +1,21 @@
 container:
   image: openjdk:11-jdk
-  cpu: 4
-  memory: 12
+  cpu: 2
+  memory: 1G
 
 task:
-  name: TEST1
-  test1_script: java -version
-  test2_script: 
-    - echo "Here comes more then one script!"
-    - printenv
+  name: install
+  script:
+  - git clone https://github.com/watchdog-wms/build-tools
+  - WATCHDOG_PR_CHECKER=$(pwd)/build-tools/jars/PullRequestChecker.jar
+  always: ls "${WATCHDOG_PR_CHECKER}" > /dev/null 2>&1
 
 task:
-  name: TEST2
-  test1_script: git show $CIRRUS_CHANGE_IN_REPO
+  name: java test
+  depends_on: install
+  script: java -version
+
+task:
+  name: VERIFIED_COMMIT
+  depends_on: install
+  script: java -jar "${WATCHDOG_PR_CHECKER}" -check "VERIFIED_COMMIT"
