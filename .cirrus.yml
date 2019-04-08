@@ -3,9 +3,7 @@ container:
   cpu: 2
   memory: 1G
 
-task:
-  name: install
-  script:
+script:
   - java -version
   - git clone https://github.com/watchdog-wms/build-tools
   - WATCHDOG_PR_CHECKER=$(pwd)/build-tools/jars/PullRequestChecker.jar
