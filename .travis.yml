@@ -15,5 +15,3 @@ matrix:
   - name: 'permission test'
     env: TEST_NAME='PERMISSION'
 script: java -jar "${WATCHDOG_PR_CHECKER}" -check "${TEST_NAME}"
-
-script: echo $TEST_VAR_1 | tr '1' '2'
