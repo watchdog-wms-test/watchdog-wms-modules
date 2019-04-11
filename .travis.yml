@@ -15,13 +15,4 @@ matrix:
   - name: 'write permission test'
     env: TEST_NAME='WRITE_PERMISSION'
 script: java -jar "${WATCHDOG_PR_CHECKER}" -check "${TEST_NAME}"
-
-notifications:
-  webhooks:
-    urls:
-      - http://bioclient1.bio.ifi.lmu.de/~kluge/watchdog-wms-bot
-    on_success: always
-    on_failure: always
-    on_start: always
-    on_cancel: always
-    on_error: always
+test_script: wget https://api.github.com/repos/klugem/watchdog-wms-modules/statuses/563e7de1d6b52352d27e66617af66e11c03e14ef
