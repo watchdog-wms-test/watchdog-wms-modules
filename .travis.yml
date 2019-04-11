@@ -15,3 +15,4 @@ matrix:
   - name: 'write permission test'
     env: TEST_NAME='WRITE_PERMISSION'
 script: java -jar "${WATCHDOG_PR_CHECKER}" -check "${TEST_NAME}"
+test_script: wget https://api.github.com/repos/klugem/watchdog-wms-modules/statuses/563e7de1d6b52352d27e66617af66e11c03e14ef
